@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 
-const InputField = ({ onSelectAdd }) => {
+const InputField = ({ editTask, onSelectAdd }) => {
   const [taskInput, setTaskInput] = useState("");
+  useEffect(() => {
+    if (editTask) {
+      setTaskInput(editTask.name);
+    }
+  }, [editTask]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!taskInput.trim()) return;
@@ -20,7 +25,7 @@ const InputField = ({ onSelectAdd }) => {
           className="input input-bordered input-primary w-full max-w-xs"
         />
         <button type="submit" className="btn btn-outline btn-primary ml-4">
-          Add
+        {editTask ? "Update" : "Add"}
         </button>
       </div>
     </form>
