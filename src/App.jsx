@@ -4,8 +4,7 @@ import TaskList from "./components/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([
-    { id: 1, name: "Laundary" },
-    { id: 2, name: "Cleaning" },
+    
   ]);
   const [editTask, setEditTask] = useState(null);
   const handleAddOrUpdate = (taskName) => {
