@@ -3,9 +3,7 @@ import InputField from "./components/InputField";
 import TaskList from "./components/TaskList";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    
-  ]);
+  const [tasks, setTasks] = useState([]);
   const [editTask, setEditTask] = useState(null);
   const handleAddOrUpdate = (taskName) => {
     if (editTask) {
@@ -16,7 +14,10 @@ function App() {
       );
       setEditTask(null);
     } else {
-      setTasks([...tasks, { id: tasks.length + 1, name: taskName }]);
+      setTasks([
+        ...tasks,
+        { id: tasks.length + 1, name: taskName, completed: false },
+      ]);
     }
   };
 
@@ -29,6 +30,13 @@ function App() {
           tasks={tasks}
           onDelete={(id) => setTasks(tasks.filter((task) => task.id !== id))}
           onEdit={(task) => setEditTask(task)}
+          toggleTask={(id) =>
+            setTasks(
+              tasks.map((task) =>
+                task.id == id ? { ...task, completed: !task.completed } : task
+              )
+            )
+          }
         />
       </div>
     </>
