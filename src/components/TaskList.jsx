@@ -7,7 +7,7 @@ const TaskList = ({ tasks,onDelete,onEdit }) => {
         <li key={task.id} className="flex justify-between p-2 border rounded-lg mb-3 border-gray-400">
           {task.name} 
           <div>
-          <button onClick={()=>{onEdit(task)}}><MdEdit/></button>
+          <button className="mr-4" onClick={()=>{onEdit(task)}}><MdEdit/></button>
           <button onClick={()=>onDelete(task.id)}><MdDelete/></button>
           </div>
         </li>
